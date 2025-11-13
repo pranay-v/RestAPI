@@ -84,7 +84,8 @@ The API will start on - http://localhost:8080
     "message": "Both arrays must be sorted ascending."
      }
 
-  
+    **Note** - The input expects sorted arrays by default,and would return a validation error if this condition isn't met. This behaviour can be toggled to allow unsorted arrays by stopping the containers (**docker compose down**) and setting the **CHECK_SORTED** environment variable to **false** in the docker-compose.yml file. After updating the value, simply run **docker compose up** and the app would now accept unsorted arrays and handle them accordingly.
+
   - **GET /api/merge/by-length/{length}**
 
     Retrieve all previous merges where the resulting array had the specified length.
