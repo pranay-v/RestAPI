@@ -8,39 +8,38 @@ The Merge API accepts two arrays of integers, merges and sorts them, stores the 
 
 
 🧱 Features
-
-Merge two integer arrays and return the combined, sorted result
-Automatically persists each merge to SQLite
-Retrieve previous merges by result length
-Environment-controlled validation (sorted check & array size limits)
-Works seamlessly inside Docker
-Swagger UI support for easy testing
+- 🔢 **Merge two integer arrays** and return the combined, sorted result  
+- 💾 **Automatically persists** each merge to a local SQLite database  
+- 📜 **Retrieve previous merges** by result length  
+- ⚙️ **Environment-controlled validation** — toggle sorted checks and array size limits  
+- 🐳 **Works seamlessly inside Docker** using `docker-compose`  
+- 🧭 **Swagger UI support** for quick and easy API testing  
 
 🛠️ Tech Stack
-Component	Technology
-Framework	ASP.NET Core 8
-Database	SQLite (local file /app/data/merge.db)
-Containerization	Docker & Docker Compose
-Language	C#
+
+| Component         | Technology                              |
+|-------------------|------------------------------------------|
+| 🧩 Framework       | ASP.NET Core 8                          |
+| 🗄️ Database        | SQLite (local file: `/app/data/merge.db`) |
+| 🐳 Containerization | Docker & Docker Compose                 |
+| 💻 Language        | C#                                      |
 
 
 Note: Changing environment variables requires a container restart or rebuild.
 
 Docker Setup
-1️⃣ Build and start
-docker compose up -d --build
+- 1️⃣ Build and start
+  docker compose up -d --build
 
-2️⃣ Verify containers
-docker ps
-
+- 2️⃣ Verify containers
+  docker ps
 
 You should see:
-
 mergeapi   ...   Up ...   0.0.0.0:8080->8080/tcp
 
-3️⃣ Access the API
+- 3️⃣ Access the API
 
-Open in your browser or Postman:
+ Open in your browser or Postman:
  Swagger UI — http://localhost:8080/swagger
 
 🧭 Endpoints
