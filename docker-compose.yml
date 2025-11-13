@@ -1,0 +1,14 @@
+version: '3.9'
+
+services:
+  api:
+    build: .
+    container_name: mergeapi
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data:/app/data  # Persist SQLite DB between container restarts
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - CHECK_SORTED=true           # Toggle sorting validation
+      - MAX_ARRAY_LENGTH=10000      # Max elements per array
