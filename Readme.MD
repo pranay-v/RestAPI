@@ -28,52 +28,65 @@ The Merge API accepts two arrays of integers, merges and sorts them, stores the 
 Note: Changing environment variables requires a container restart or rebuild.
 
 Docker Setup
+
 - 1️⃣ Build and start
-  docker compose up -d --build
+  - docker compose up -d --build
 
 - 2️⃣ Verify containers
-  docker ps
+  - docker ps
 
 You should see:
-mergeapi   ...   Up ...   0.0.0.0:8080->8080/tcp
+  - mergeapi   ...   Up ...   0.0.0.0:8080->8080/tcp
 
 - 3️⃣ Access the API
 
- Open in your browser or Postman:
- Swagger UI — http://localhost:8080/swagger
+  - Open in your browser or Postman:
+  - Swagger UI — http://localhost:8080/swagger
+
+
+🧰 Local Development (without Docker)
+
+1️⃣ Restore dependencies
+  - dotnet restore
+
+2️⃣ Run the API
+  - dotnet run
+
+The API will start on - http://localhost:8080
+
 
 🧭 Endpoints
-POST /api/merge
+  - **POST /api/merge**
 
-Merge two arrays and store the result.
+  - Merge two arrays and store the result.
 
 Request body
-{
+  {
   "array1": [1, 3, 5],
   "array2": [2, 4, 6]
-}
+  }
 
-Response
-{
+ Response
+  {
   "result": [1, 2, 3, 4, 5, 6],
   "length": 6,
   "timestamp": "2025-11-13T16:10:23.456Z"
-}
+  }
 
 
-If arrays exceed the configured max size or are unsorted (and CHECK_SORTED=true):
+  - If arrays exceed the configured max size or are unsorted (and CHECK_SORTED=true):
 
-{
-  "status": 400,
-  "message": "Both arrays must be sorted ascending."
-}
+  {
+    "status": 400,
+    "message": "Both arrays must be sorted ascending."
+  }
 
-GET /api/merge/by-length/{length}
+  - **GET /api/merge/by-length/{length}**
 
-Retrieve all previous merges where the resulting array had the specified length.
+  - Retrieve all previous merges where the resulting array had the specified length.
 
 Example
-GET /api/merge/by-length/6
+  - GET /api/merge/by-length/6
 
 Response
 [
