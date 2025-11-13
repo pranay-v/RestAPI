@@ -35,15 +35,15 @@ Docker Setup
 - 2️⃣ Verify containers
   - docker ps
 
-You should see:
-  - mergeapi   ...   Up ...   0.0.0.0:8080->8080/tcp
+  You should see:
+  mergeapi   ...   Up ...   0.0.0.0:8080->8080/tcp
 
 - 3️⃣ Access the API
 
-  - Open in your browser or Postman:
+  Open in your browser or Postman:
   - Swagger UI — http://localhost:8080/swagger
 
-
+  
 🧰 Local Development (without Docker)
 
 1️⃣ Restore dependencies
@@ -58,28 +58,28 @@ The API will start on - http://localhost:8080
 🧭 Endpoints
   - **POST /api/merge**
 
-  - Merge two arrays and store the result.
+    Merge two arrays and store the result.
 
-Request body
-  {
-  "array1": [1, 3, 5],
-  "array2": [2, 4, 6]
-  }
+    Request body
+    {
+    "array1": [1, 3, 5],
+    "array2": [2, 4, 6]
+    }
 
- Response
-  {
-  "result": [1, 2, 3, 4, 5, 6],
-  "length": 6,
-  "timestamp": "2025-11-13T16:10:23.456Z"
-  }
+    Response
+    {
+    "result": [1, 2, 3, 4, 5, 6],
+    "length": 6,
+    "timestamp": "2025-11-13T16:10:23.456Z"
+    }
 
 
-  - If arrays exceed the configured max size or are unsorted (and CHECK_SORTED=true):
+    If arrays exceed the configured max size or are unsorted (and CHECK_SORTED=true):
 
-  {
+     {
     "status": 400,
     "message": "Both arrays must be sorted ascending."
-  }
+     }
 
   - **GET /api/merge/by-length/{length}**
 
