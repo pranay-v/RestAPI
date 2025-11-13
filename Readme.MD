@@ -1,13 +1,13 @@
-🧩 Merge API
+🧩 **Merge API**
 
 An ASP.NET Core Web API that merges two integer arrays, stores merge history in a SQLite database, and supports flexible runtime configuration.
 
-🚀 Overview
+🚀 **Overview**
 
 The Merge API accepts two arrays of integers, merges and sorts them, stores the result in a local SQLite database, and allows lookup of previous merges by result length.
 
 
-🧱 Features
+🧱 **Features**
 - 🔢 **Merge two integer arrays** and return the combined, sorted result  
 - 💾 **Automatically persists** each merge to a local SQLite database  
 - 📜 **Retrieve previous merges** by result length  
@@ -15,7 +15,8 @@ The Merge API accepts two arrays of integers, merges and sorts them, stores the 
 - 🐳 **Works seamlessly inside Docker** using `docker-compose`  
 - 🧭 **Swagger UI support** for quick and easy API testing  
 
-🛠️ Tech Stack
+
+🛠️ **Tech Stack**
 
 | Component         | Technology                              |
 |-------------------|------------------------------------------|
@@ -27,7 +28,8 @@ The Merge API accepts two arrays of integers, merges and sorts them, stores the 
 
 Note: Changing environment variables requires a container restart or rebuild.
 
-Docker Setup
+
+**Docker Setup**
 
 - 1️⃣ Build and start
   - docker compose up -d --build
@@ -44,7 +46,7 @@ Docker Setup
   - Swagger UI — http://localhost:8080/swagger
 
   
-🧰 Local Development (without Docker)
+🧰 **Local Development (without Docker)**
 
 1️⃣ Restore dependencies
   - dotnet restore
@@ -55,18 +57,19 @@ Docker Setup
 The API will start on - http://localhost:8080
 
 
-🧭 Endpoints
+
+🧭 **Endpoints**
   - **POST /api/merge**
 
     Merge two arrays and store the result.
 
-    Request body
+    **Request body:** 
     {
     "array1": [1, 3, 5],
     "array2": [2, 4, 6]
     }
 
-    Response
+    **Response:**
     {
     "result": [1, 2, 3, 4, 5, 6],
     "length": 6,
@@ -81,20 +84,21 @@ The API will start on - http://localhost:8080
     "message": "Both arrays must be sorted ascending."
      }
 
+  
   - **GET /api/merge/by-length/{length}**
 
-  - Retrieve all previous merges where the resulting array had the specified length.
+    Retrieve all previous merges where the resulting array had the specified length.
 
-Example
-  - GET /api/merge/by-length/6
+    **Example**
+    GET /api/merge/by-length/6
 
-Response
-[
-  {
-    "array1": [1, 3, 5],
-    "array2": [2, 4, 6],
-    "result": [1, 2, 3, 4, 5, 6],
-    "length": 6,
-    "timestamp": "2025-11-13T16:10:23.456Z"
-  }
-]
+    **Response:**
+    [
+      {
+        "array1": [1, 3, 5],
+        "array2": [2, 4, 6],
+        "result": [1, 2, 3, 4, 5, 6],
+        "length": 6,
+        "timestamp": "2025-11-13T16:10:23.456Z"
+      }
+    ]
